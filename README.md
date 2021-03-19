@@ -1,4 +1,6 @@
-## TAMY
+# Interview Preparation
+
+## Tell Me About Yourself
 
 Hello, My name is Saverio, I'm from Italy, and I have a degree in Eastern Languages and Linguistics.
 
@@ -17,7 +19,7 @@ Now as a next step I'm attending the Sparta Global training for Junior DevOps Co
 
 I'm very interested in Science and Technology and like to keep updated with the latest news on Artificial Intelligence and Robotics.
 
-## Interview questions
+### Business Week Questions
 
 #### Question: What is Agile and what are the benefits of implementing it?
 * Answer: Agile is a set of principles for software development based on the best practices that have been observed to lead to
@@ -52,3 +54,49 @@ the simplicity is maintained and no unecessary work is performed.
 - Answer: In the short term I see myself as working as a Junior DevOps Consultant at Sparta GLobal, but after that I plan on taking advantage
 of the experience I've accumulated in this role and progress my career up to Senior in DevOps, or maybe any related opportunities that require
 a similar skillset.
+
+### SQL Questions
+
+#### What is a JOIN?
+- Answer: A JOIN is an operation that can be performed during a query between two tables in a database, to retrieve data from a combination of
+the two. A JOIN requires an ON qualifier, that equates the element of a column from one table with another column from the other table. There
+are different kinds of JOIN, like for example LEFT and RIGHT JOIN, that create a subset containing all the elements from (respectively) the left
+or right table, filling empty cells from the other table with *NULL*, or INNER JOIN, that only returns rows in which the compared elements are
+present in both.
+
+#### What is primary key and foreign key and what are their functions?
+- Answers: In a relational database, tables have keys, that is to say entries in some columns, that have the function of linking the tables
+together. Primary keys have to respect certain parameters, like being each element of a primary key being unique, never *NULL*, and not change
+for the duration of the table. Primary keys can also be simple (made of just one column) or composite (made of more than one column). Foreign
+keys in contrast can be repeated, can be *NULL*, and can be changed. Keys are important in defining relations between tables, and can be used to
+handle one-to-one relations, one-to-many relations, or many-to-many, through the use of junction tables.
+
+#### Describe DML, DDL, DCL and TCL.
+* Answer: The operations possible in SQL can be divided in multiple categories:
+    * DML, or Data Manipulation Language, handles the content of tables and can be used to modify or delete rows. The statements associated with
+  this level of control of a database are:
+        * SELECT, that allows to retrieve information from a table;
+        * INSERT, that allows to insert information inside a table;
+        * UPDATE, for changing the contents of a pre-existing element;
+        * DELETE, for deleting single elements or rows.
+    * DDL, or Data Definition Language, that allows to work on the structure of the database itself. The statements of DDL are:
+        * CREATE, which allows for the creation of tables;
+        * ALTER, which is used to add, delete or modify the columns of a table;
+        * DROP, which cancels a table.
+        * TRUNCATE, which empties a table of all its contents while leaving its structure intact.
+    * DCL, or Data Control Language, which is used to handle the user permissions in a database
+        * GRANT, to grant permissions to a user;
+        * REVOKE, to revoke permissions.
+    * TCL, or Transaction Control Language, that deals with manage the changes to a database. The statements are:
+        * COMMIT, to permanently save changes to the database;
+        * ROLLBACK, to change the state of the database to a previus savepoint;
+        * SAVEPOINT, to save the current state of the database.
+
+#### Describe Normalisation and its first three forms.
+* Answer: Database Normalisation is the process of structuring a relational database such that data integrity is maximised and redundancy is reduced.
+    * #TODO
+
+#### What is an Entity Relationship Diagram?
+- Answer: An Entity Relationship Diagram (ERP) is a graph that visualises the structure of the database in use. It lists the names of the tables,
+the columns in each table and their associated data type, the relationships between tables, and the primary and foreign keys. An ERP is essential
+for getting a bird's eye view of the database and make any change and query be written much more quickly and efficiently.
