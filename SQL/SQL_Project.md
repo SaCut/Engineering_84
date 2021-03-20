@@ -37,10 +37,10 @@ SELECT
     pr.ProductName,
     sp.CompanyName,
     sp.Country
-    FROM Products pr
-    FULL JOIN Suppliers sp
-        ON pr.SupplierID = sp.SupplierID
-    WHERE QuantityPerUnit LIKE '%bottle%';
+FROM Products pr
+FULL JOIN Suppliers sp
+    ON pr.SupplierID = sp.SupplierID
+WHERE QuantityPerUnit LIKE '%bottle%';
 ```
 
 
@@ -50,10 +50,11 @@ SELECT
     c.CategoryName,
     COUNT(p.ProductID)
         AS "Products in category"
-    FROM Products p 
-    INNER JOIN Categories c ON p.CategoryID = c.CategoryID
-    GROUP BY c.CategoryName 
-    ORDER BY [Products In Category] DESC;
+FROM Products p 
+INNER JOIN Categories c
+    ON p.CategoryID = c.CategoryID
+GROUP BY c.CategoryName 
+ORDER BY [Products In Category] DESC;
 ```
 
 
@@ -62,8 +63,8 @@ SELECT
 SELECT
     CONCAT(TitleOfCourtesy, ' ', FirstName, ' ', LastName),
     City
-    FROM Employees
-    WHERE Country LIKE '%UK%';
+FROM Employees
+WHERE Country LIKE '%UK%';
 ```
 
 
@@ -71,7 +72,8 @@ SELECT
 ```SQL
 SELECT
     r.RegionDescription,
-    FORMAT(SUM(od.UnitPrice*od.Quantity-(od.UnitPrice*od.Discount)), '$#,###,###.##') AS "Total"
+    FORMAT(SUM(od.UnitPrice*od.Quantity-(od.UnitPrice*od.Discount)), '$#,###,###.##')
+        AS "Total"
     FROM [Order Details] od
     INNER JOIN Orders o ON od.OrderID = o.OrderID
     INNER JOIN [EmployeeTerritories] e ON o.EmployeeID = e.EmployeeID
@@ -86,9 +88,12 @@ SELECT
 #### 1.7 Count how many Orders have a Freight amount greater than 100.00 and either USA or UK as Ship Country.
 ```SQL
 SELECT
-    COUNT(OrderID) AS "Order over 100"
-    FROM Orders
-    WHERE Freight >100.00 AND ShipCountry IN ('USA', 'UK');
+    COUNT(OrderID)
+        AS "Order over 100"
+FROM Orders
+WHERE
+    Freight > 100.00
+    AND ShipCountry IN ('USA', 'UK');
 ```
 
 
@@ -96,10 +101,11 @@ SELECT
 ```SQL
 SELECT TOP 1
     OrderID,
-    FORMAT(ROUND(UnitPrice*Quantity*Discount), '$#,###,###.##') AS "Higest Discount Value"
-    FROM [Order Details]
-    GROUP BY OrderID
-    ORDER BY SUM(UnitPrice*Quantity*Discount) DESC;
+    FORMAT(ROUND(UnitPrice*Quantity*Discount), '$#,###,###.##')
+        AS "Higest Discount Value"
+FROM [Order Details]
+GROUP BY OrderID
+ORDER BY SUM(UnitPrice*Quantity*Discount) DESC;
 ```
 
 
@@ -125,7 +131,7 @@ CREATE TABLE spartan_table
 #### 2.2 Write SQL statements to add the details of the Spartans in your course to the table you have created.
 ```SQL
 INSERT INTO spartan_table
-    (first_name, middle_name, last_name, university_attended, course_name, mark_achieved, sparta_course)
+    (first_name,    middle_name,    last_name,  university_attended,    course_name,    mark_achieved,  sparta_course)
 VALUES
     ('Alice', 'Laura', 'Smith', 'Goldsmith University', 'Computer Science', '100', 'Engineering 82'),
     ('Bob', 'Jay', 'Stevenson', 'Royal College of Arts', 'Origami', '60', 'Engineering 84'),
@@ -138,11 +144,13 @@ VALUES
 #### 3.1 List all Employees from the Employees table and who they report to. No Excel required. Please mention the Employee Names and the Report To names.
 ```SQL
 SELECT
-    CONCAT(r.FirstName, ' ', r.LastName) AS "Employee Name",
-    CONCAT(e.FirstName, ' ', e.LastName) AS "Reports To"
-    FROM Employees e
-    RIGHT JOIN Employees r
-        ON e.EmployeeID = r.ReportsTo
+    CONCAT(r.FirstName, ' ', r.LastName)
+        AS "Employee Name",
+    CONCAT(e.FirstName, ' ', e.LastName)
+        AS "Reports To"
+FROM Employees e
+RIGHT JOIN Employees r
+    ON e.EmployeeID = r.ReportsTo
 ```
 
 
@@ -151,15 +159,16 @@ SELECT
 SELECT
     DISTINCT s.SupplierID,
     S.CompanyName,
-    SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount)) AS "Total Sales"
-    FROM Suppliers s
-    INNER JOIN Products p
-        ON s.SupplierID = p.SupplierID
-    INNER JOIN [Order Details] od
-        ON p.ProductID = od.ProductID
-    GROUP BY s.SupplierID, s.CompanyName
-    HAVING SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount)) > 10000
-    ORDER BY "Total Sales";
+    SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount))
+        AS "Total Sales"
+FROM Suppliers s
+INNER JOIN Products p
+    ON s.SupplierID = p.SupplierID
+INNER JOIN [Order Details] od
+    ON p.ProductID = od.ProductID
+GROUP BY s.SupplierID, s.CompanyName
+HAVING SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount)) > 10000
+ORDER BY "Total Sales";
 ```
 ![alt text](https://imgur.com/EHarzWv.png)
 
@@ -167,26 +176,31 @@ SELECT
 #### 3.3 List the Top 10 Customers YTD for the latest year in the Orders file. Based on total value of orders shipped. No Excel required.
 ```SQL
 SELECT TOP 10
-    c.CustomerID AS "Customer ID",
-    c.CompanyName AS "Company",
-    FORMAT(SUM(UnitPrice * Quantity * (1-Discount)), 'C') AS "YearToDate Sales"
-    FROM Customers c
-    INNER JOIN Orders o
-        ON o.CustomerID=c.CustomerID
-    INNER JOIN [Order Details] od
-        ON od.OrderID=o.OrderID
-    WHERE YEAR(OrderDate) = (SELECT MAX(YEAR(OrderDate)) From Orders)
-    AND o.ShippedDate IS NOT NULL
-    GROUP BY c.CustomerID, c.CompanyName
-    ORDER BY SUM(UnitPrice * Quantity * (1-Discount)) DESC;
+    c.CustomerID
+        AS "Customer ID",
+    c.CompanyName
+        AS "Company",
+    FORMAT(SUM(UnitPrice * Quantity * (1-Discount)), 'C')
+        AS "YearToDate Sales"
+FROM Customers c
+INNER JOIN Orders o
+    ON o.CustomerID=c.CustomerID
+INNER JOIN [Order Details] od
+    ON od.OrderID=o.OrderID
+WHERE YEAR(OrderDate) = (SELECT MAX(YEAR(OrderDate)) From Orders)
+AND o.ShippedDate IS NOT NULL
+GROUP BY c.CustomerID, c.CompanyName
+ORDER BY SUM(UnitPrice * Quantity * (1-Discount)) DESC;
 ```
 
 
 #### 3.4 Plot the Average Ship Time by month for all data in the Orders Table using a line chart as below.
 ```SQL
 SELECT 
-    CONCAT(YEAR(o.OrderDate),'/',MONTH(o.OrderDate)) AS "Year-Month",
-    AVG(DATEDIFF(d, o.OrderDate,o.ShippedDate)) AS "Average Ship Time"
+    CONCAT(YEAR(o.OrderDate),'/',MONTH(o.OrderDate))
+        AS "Year-Month",
+    AVG(DATEDIFF(d, o.OrderDate,o.ShippedDate))
+        AS "Average Ship Time"
     FROM Orders o 
     GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate)
     ORDER BY YEAR(o.OrderDate), MONTH(o.OrderDate);
