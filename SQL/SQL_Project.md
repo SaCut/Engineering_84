@@ -1,8 +1,10 @@
 # SQL_Mini_Project
 A small project written in SQL on the Sparta Northwind Database
 
+```
+-- Using Database Northwind
 USE Northwind
-
+```
 
 ## EXERCISE 1 
 
