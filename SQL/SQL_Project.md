@@ -28,7 +28,7 @@ WHERE City IN ('Paris', 'London');
 SELECT
     ProductName
 FROM Products
-WHERE CHARINDEX('bottle', QuantityPerUnit) != 0;
+WHERE CHARINDEX ('bottle', QuantityPerUnit) != 0;
 ```
 
 
@@ -40,7 +40,7 @@ SELECT
     sp.CompanyName,
     sp.Country
 FROM Products pr
-FULL JOIN Suppliers sp
+JOIN Suppliers sp
     ON pr.SupplierID = sp.SupplierID
 WHERE QuantityPerUnit LIKE '%bottle%';
 ```
@@ -50,7 +50,7 @@ WHERE QuantityPerUnit LIKE '%bottle%';
 ```SQL
 SELECT
     c.CategoryName,
-    COUNT(p.ProductID)
+    COUNT (p.ProductID)
         AS "Products in category"
 FROM Products p 
 INNER JOIN Categories c
@@ -63,7 +63,7 @@ ORDER BY [Products In Category] DESC;
 #### 1.5 List all UK employees using concatenation to join their title of courtesy, first name and last name together. Also include their city of residence. 
 ```SQL
 SELECT
-    CONCAT(TitleOfCourtesy, ' ', FirstName, ' ', LastName),
+    CONCAT (TitleOfCourtesy, ' ', FirstName, ' ', LastName),
     City
 FROM Employees
 WHERE Country LIKE '%UK%';
@@ -74,7 +74,7 @@ WHERE Country LIKE '%UK%';
 ```SQL
 SELECT
     r.RegionDescription,
-    FORMAT(SUM(od.UnitPrice*od.Quantity-(od.UnitPrice*od.Discount)), '$#,###,###.##')
+    FORMAT (SUM ((od.UnitPrice * od.Quantity) - (od.UnitPrice * od.Discount)), '$#,###,###.##')
         AS "Total"
     FROM [Order Details] od
     INNER JOIN Orders o ON od.OrderID = o.OrderID
@@ -82,7 +82,7 @@ SELECT
     INNER JOIN Territories t ON e.TerritoryID = t.TerritoryID
     INNER JOIN Region r ON t.RegionID = r.RegionID
     GROUP BY r.RegionDescription
-        HAVING SUM(od.UnitPrice*od.Quantity-(od.UnitPrice*od.Discount)) >= 1000000
+        HAVING SUM ((od.UnitPrice * od.Quantity) - (od.UnitPrice * od.Discount)) >= 1000000
     ORDER BY [Total] DESC;
 ```
 
@@ -90,7 +90,7 @@ SELECT
 #### 1.7 Count how many Orders have a Freight amount greater than 100.00 and either USA or UK as Ship Country.
 ```SQL
 SELECT
-    COUNT(OrderID)
+    COUNT (OrderID)
         AS "Order over 100"
 FROM Orders
 WHERE
@@ -103,11 +103,11 @@ WHERE
 ```SQL
 SELECT TOP 1
     OrderID,
-    FORMAT(ROUND(UnitPrice*Quantity*Discount), '$#,###,###.##')
+    FORMAT (ROUND (UnitPrice * Quantity * Discount), '$#,###,###.##')
         AS "Higest Discount Value"
 FROM [Order Details]
 GROUP BY OrderID
-ORDER BY SUM(UnitPrice*Quantity*Discount) DESC;
+ORDER BY SUM (UnitPrice * Quantity * Discount) DESC;
 ```
 
 
@@ -116,24 +116,22 @@ ORDER BY SUM(UnitPrice*Quantity*Discount) DESC;
 #### 2.1 Write the correct SQL statement to create the following table: 
 Spartans Table – include details about all the Spartans on this course. Separate Title, First Name and Last Name into separate columns, and include University attended, course taken and mark achieved. Add any other columns you feel would be appropriate.  
 ``` SQL
-CREATE TABLE spartan_table
-(
-    spartan_id INT IDENTITY(1,1) PRIMARY KEY,
-    first_name VARCHAR(20),
-    middle_name VARCHAR(20),
-    last_name VARCHAR(20),
-    university_attended VARCHAR(30),
-    course_name VARCHAR(30),
-    mark_achieved CHAR(3),
-    sparta_course VARCHAR(20)
+CREATE TABLE Spartans (
+    FirstName VARCHAR(20),
+    MiddleName VARCHAR(20),
+    LastName VARCHAR(20),
+    UniversityAttended VARCHAR(30),
+    CourseName VARCHAR(30),
+    MarkAchieved CHAR(3),
+    SpartaStream VARCHAR(20)
 );
 ```
 
 
 #### 2.2 Write SQL statements to add the details of the Spartans in your course to the table you have created.
 ```SQL
-INSERT INTO spartan_table
-    (first_name,    middle_name,    last_name,  university_attended,    course_name,    mark_achieved,  sparta_course)
+INSERT INTO Spartans
+    (FirstName,    MiddleName,    LastName,  UniversityAttended,    CourseName,    MarkAchieved,  SpartaStream)
 VALUES
     ('Alice', 'Laura', 'Smith', 'Goldsmith University', 'Computer Science', '100', 'Engineering 82'),
     ('Bob', 'Jay', 'Stevenson', 'Royal College of Arts', 'Origami', '60', 'Engineering 84'),
@@ -146,9 +144,9 @@ VALUES
 #### 3.1 List all Employees from the Employees table and who they report to. No Excel required. Please mention the Employee Names and the Report To names.
 ```SQL
 SELECT
-    CONCAT(r.FirstName, ' ', r.LastName)
+    CONCAT (r.FirstName, ' ', r.LastName)
         AS "Employee Name",
-    CONCAT(e.FirstName, ' ', e.LastName)
+    CONCAT (e.FirstName, ' ', e.LastName)
         AS "Reports To"
 FROM Employees e
 RIGHT JOIN Employees r
@@ -161,7 +159,7 @@ RIGHT JOIN Employees r
 SELECT
     DISTINCT s.SupplierID,
     S.CompanyName,
-    SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount))
+    SUM ((od.UnitPrice * od.Quantity) - (od.UnitPrice * od.Discount))
         AS "Total Sales"
 FROM Suppliers s
 INNER JOIN Products p
@@ -169,42 +167,44 @@ INNER JOIN Products p
 INNER JOIN [Order Details] od
     ON p.ProductID = od.ProductID
 GROUP BY s.SupplierID, s.CompanyName
-HAVING SUM((od.UnitPrice*od.Quantity)-(od.UnitPrice*od.Discount)) > 10000
+HAVING SUM ((od.UnitPrice * od.Quantity) - (od.UnitPrice * od.Discount)) > 10000
 ORDER BY "Total Sales";
 ```
 ![alt text](https://imgur.com/EHarzWv.png)
 
 
-#### 3.3 List the Top 10 Customers YTD for the latest year in the Orders file. Based on total value of orders shipped. No Excel required.
+#### 3.3 List the Top 10 Customers YTD for the latest year in the Orders file. Based on total value of orders shipped.
 ```SQL
 SELECT TOP 10
     c.CustomerID
         AS "Customer ID",
     c.CompanyName
         AS "Company",
-    FORMAT(SUM(UnitPrice * Quantity * (1-Discount)), 'C')
+    FORMAT (SUM (UnitPrice * Quantity * (1-Discount)), 'C')
         AS "YearToDate Sales"
 FROM Customers c
 INNER JOIN Orders o
     ON o.CustomerID=c.CustomerID
 INNER JOIN [Order Details] od
     ON od.OrderID=o.OrderID
-WHERE YEAR(OrderDate) = (SELECT MAX(YEAR(OrderDate)) From Orders)
-AND o.ShippedDate IS NOT NULL
+WHERE (
+    YEAR(OrderDate) = (SELECT MAX(YEAR(OrderDate)) From Orders)
+    AND o.ShippedDate IS NOT NULL
+    )
 GROUP BY c.CustomerID, c.CompanyName
-ORDER BY SUM(UnitPrice * Quantity * (1-Discount)) DESC;
+ORDER BY SUM (UnitPrice * Quantity * (1-Discount)) DESC;
 ```
 
 
 #### 3.4 Plot the Average Ship Time by month for all data in the Orders Table using a line chart as below.
 ```SQL
 SELECT 
-    CONCAT(YEAR(o.OrderDate),'/',MONTH(o.OrderDate))
+    CONCAT (YEAR (o.OrderDate), '/', MONTH (o.OrderDate))
         AS "Year-Month",
-    AVG(DATEDIFF(d, o.OrderDate,o.ShippedDate))
-        AS "Average Ship Time"
-    FROM Orders o 
-    GROUP BY YEAR(o.OrderDate), MONTH(o.OrderDate)
-    ORDER BY YEAR(o.OrderDate), MONTH(o.OrderDate);
+    AVG (DATEDIFF (d, o.OrderDate, o.ShippedDate))
+        AS "Average Shipping Time"
+FROM Orders o 
+GROUP BY YEAR (o.OrderDate), MONTH (o.OrderDate)
+ORDER BY YEAR (o.OrderDate), MONTH (o.OrderDate);
 ```
 ![alt text](https://imgur.com/adgskM1.png)
