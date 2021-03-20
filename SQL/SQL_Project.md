@@ -16,8 +16,8 @@ SELECT
     Address,
     PostalCode,
     Country
-    FROM Customers
-    WHERE City IN ('Paris', 'London');
+FROM Customers
+WHERE City IN ('Paris', 'London');
 ```
 
 
@@ -25,8 +25,8 @@ SELECT
 ```SQL
 SELECT
     ProductName
-    FROM Products
-    WHERE CHARINDEX('bottle', QuantityPerUnit) != 0;
+FROM Products
+WHERE CHARINDEX('bottle', QuantityPerUnit) != 0;
 ```
 
 
@@ -150,7 +150,7 @@ SELECT
         AS "Reports To"
 FROM Employees e
 RIGHT JOIN Employees r
-    ON e.EmployeeID = r.ReportsTo
+    ON e.EmployeeID = r.ReportsTo;
 ```
 
 
