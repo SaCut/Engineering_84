@@ -108,3 +108,5 @@ for getting a bird's eye view of the database and make any change and query be w
 for committing local code to the cloud and rollbacks when needed. Git-hub is an online repository, maily intended for saving, editing, collectively
 editing and backing up software on the cloud, in order for the code to be securely stored and available everywhere and to everyone that has been
 granted access to it.
+
+![alt text](https://i.imgur.com/zYNe0lK.png)
