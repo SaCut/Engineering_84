@@ -100,3 +100,11 @@ handle one-to-one relations, one-to-many relations, or many-to-many, through the
 - Answer: An Entity Relationship Diagram (ERP) is a graph that visualises the structure of the database in use. It lists the names of the tables,
 the columns in each table and their associated data type, the relationships between tables, and the primary and foreign keys. An ERP is essential
 for getting a bird's eye view of the database and make any change and query be written much more quickly and efficiently.
+
+### Python Week One questions
+
+#### What are Git and Github, and why are they useful?
+- Answer: Git is a version control system on the user device that allows for version control of the software that one is working on, and it allows
+for committing local code to the cloud and rollbacks when needed. Git-hub is an online repository, maily intended for saving, editing, collectively
+editing and backing up software on the cloud, in order for the code to be securely stored and available everywhere and to everyone that has been
+granted access to it.
