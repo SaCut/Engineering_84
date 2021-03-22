@@ -109,4 +109,4 @@ for committing local code to the cloud and rollbacks when needed. Git-hub is an 
 editing and backing up software on the cloud, in order for the code to be securely stored and available everywhere and to everyone that has been
 granted access to it.
 
-![alt text](https://i.imgur.com/zYNe0lK.png)
+![alt text](https://i.imgur.com/0EhJ1Zu.png)
