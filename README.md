@@ -101,7 +101,7 @@ handle one-to-one relations, one-to-many relations, or many-to-many, through the
 the columns in each table and their associated data type, the relationships between tables, and the primary and foreign keys. An ERP is essential
 for getting a bird's eye view of the database and make any change and query be written much more quickly and efficiently.
 
-### Python Week One questions
+### Python and OOP questions
 
 #### What are Git and Github, and why are they useful?
 - Answer: Git is a version control system on the user device that allows for version control of the software that one is working on, and it allows
@@ -110,3 +110,22 @@ editing and backing up software on the cloud, in order for the code to be secure
 granted access to it.
 
 ![alt text](https://i.imgur.com/0EhJ1Zu.png)
+
+#### What is OOP and Why should we use it
+- Answer: Object-Oriented Programming is a programming paradigm in which the code is organised in structures called objects, that contain variables (attributes), and behaviours (methods). OOP follows the Four Pillars to optimise the paradigm.
+
+#### What are the benefits of OOP?
+- Answer: The main advantage of OOP is that it avoids rewriting the code multiple times (DRY), making software development much faster, and allows for easy scalability: objects can be shared easily between developers without any understanding of the underlying code necessary, they work like black-boxes in which values can be entered and a certain result is returned at the end. A common example of this is importing modules (shared between the community) in Python, modules that are often orders of magnitude more optimised than what would be possible to produce within a larger project, and that are maintained and adapted to work in multiple (if not all) versions of the coding environment.
+
+#### What is an API and why should we use it?
+- Answer: An Application Programming Interface is an interface that defines interactions between multiple modules or applications. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. APIs are fundamental for software interactions
+
+#### Python packages and modules - requests module use case with API
+- Answer: 
+
+#### what is pip?
+- Answer: pip os Python's package manager. It allows to find, install and manage Python packages easily from the command line.
+
+#### What are four pillars of OOP and why should we use them?
+
+##### What are the benefits of the four pillars of OOP
