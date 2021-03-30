@@ -15,7 +15,8 @@ user interfaces.
 
 I've also used Linux desktop for ten years now, so I also have a bit of practive with command line interfaces and virtual machines.
 
-Now as a next step I'm attending the Sparta Global training for Junior DevOps Consultant.
+During my Sparta Global training, I was also introduced to database management and queries with SQL, to Agile development and its
+principles, and to the use of Scrum frameworks.
 
 I'm very interested in Science and Technology and like to keep updated with the latest news on Artificial Intelligence and Robotics.
 
@@ -118,14 +119,23 @@ granted access to it.
 - Answer: The main advantage of OOP is that it avoids rewriting the code multiple times (DRY), making software development much faster, and allows for easy scalability: objects can be shared easily between developers without any understanding of the underlying code necessary, they work like black-boxes in which values can be entered and a certain result is returned at the end. A common example of this is importing modules (shared between the community) in Python, modules that are often orders of magnitude more optimised than what would be possible to produce within a larger project, and that are maintained and adapted to work in multiple (if not all) versions of the coding environment.
 
 #### What is an API and why should we use it?
-- Answer: An Application Programming Interface is an interface that defines interactions between multiple modules or applications. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. APIs are fundamental for software interactions
+- Answer: An Application Programming Interface is an interface that defines interactions between multiple modules or applications. It defines the kinds of calls or requests that can be made, how to make them, the data formats that should be used, the conventions to follow, etc. It can also provide extension mechanisms so that users can extend existing functionality in various ways and to varying degrees. APIs are fundamental for software interactions with imported modules.
 
-#### Python packages and modules - requests module use case with API
-- Answer: 
+#### What are Python packages and modules
+- Answer: packages and modules in Python are bundles of pre-written code that allow the developer to import the functionality they cover without needing to rewrite the code from scratch. The Python environment is absolutely flooded with various packages and modules, and they cover tools to do basically anything
+that could be considered general use.
 
 #### what is pip?
 - Answer: pip os Python's package manager. It allows to find, install and manage Python packages easily from the command line.
 
 #### What are four pillars of OOP and why should we use them?
-
-##### What are the benefits of the four pillars of OOP
+- Answer: the Four Pillars of OOP are:
+* **Abstraction**. An object is OOP has to be a self-contained block of code as much as possible. The ideal object is like a black-box in which the user can 
+input certain values, and get back some results obtained through the manipulation of those values. The user should never need to see or worry about what's inside
+the object, it should just work.
+* **Inheritance**. In OOP objects have attributes and methods. Inehritance is the process by which an object (called child) can receive the attributes and methods
+of another object (called parent).
+* **Encapsulation**. As previously said, objects in OOP should be self-contained. Encapsulation takes this concept a step further, so that the internal features
+of an object are not only far-removed, but actively hidden. This is useful when, for some reason, the data inside of an object has to remain private.
+* **Polymorphism** is a simple concept. Like in the animal kingdom children can inherit sligtly different features than those of their parents, so in Object
+Oriented Programming it's possible to modify or overwrite attributes and methods that have been inherited from a parent object to the child.
