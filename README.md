@@ -20,7 +20,7 @@ principles, and to the use of Scrum frameworks.
 
 I'm very interested in Science and Technology and like to keep updated with the latest news on Artificial Intelligence and Robotics.
 
-### Business Week Questions
+### Business Week - Questions
 
 #### Question: What is Agile and what are the benefits of implementing it?
 * Answer: Agile is a set of principles for software development based on the best practices that have been observed to lead to
@@ -139,3 +139,17 @@ of another object (called parent).
 of an object are not only far-removed, but actively hidden. This is useful when, for some reason, the data inside of an object has to remain private.
 * **Polymorphism** is a simple concept. Like in the animal kingdom children can inherit sligtly different features than those of their parents, so in Object
 Oriented Programming it's possible to modify or overwrite attributes and methods that have been inherited from a parent object to the child.
+
+### Interview questions - 2
+
+#### Why do you want become a DevOps Engineer/Consultant?
+- Answer: 
+
+#### explain the role of a DevOps Eng/consultant
+- Answer: 
+
+#### what is cloud computing and why should we use it
+- Answer: 
+
+#### explain how you implemented DRY - OOP - MVC - MVT - use STAR to answer this
+- Answer: 
